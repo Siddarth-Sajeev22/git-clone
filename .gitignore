@@ -1,0 +1,27 @@
+# Ignore directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Ignore MyGit repository folder
+.mygit/

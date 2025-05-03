@@ -1,0 +1,41 @@
+# Project: MyGitClone
+# Description: A .NET console application replicating basic Git functionalities.
+
+# Target Framework
+TargetFramework: net9.0
+
+# Project Structure
+Directories:
+- Commands/
+  - InitCommand.cs
+  - CommitCommand.cs
+  - PushCommand.cs
+  - MergeCommand.cs
+- Models/
+  - Commit.cs
+  - Branch.cs
+  - Repository.cs
+- Services/
+  - RepositoryService.cs
+  - CommitService.cs
+  - MergeService.cs
+  - FileSystemService.cs
+- Utils/
+  - Hasher.cs
+  - DiffUtil.cs
+- .mygit/
+  - commits/
+  - branches/
+  - HEAD
+
+# Dependencies
+NuGet Packages:
+- Newtonsoft.Json (for JSON serialization/deserialization)
+- System.IO.Abstractions (for file system operations abstraction)
+- Microsoft.Extensions.Logging (for logging)
+
+# Notes:
+- The .mygit directory stores repository metadata, including commits, branches, and the HEAD pointer.
+- Each command in the Commands directory corresponds to a Git-like operation.
+- Services handle the core logic for repository management, commits, merges, and file system interactions.
+- Utils contains helper classes for hashing and diffing file contents.
