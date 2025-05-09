@@ -1,19 +1,20 @@
 using System;
+using GitCloneApp.Services;
 
 namespace GitCloneApp.Commands
 {
-    public class InitCommand
+    public class InitCommand: ICommand
     {
-        private readonly string _repoPath;
+        private readonly GitSettings _gitSettings;
 
-        public InitCommand(string repoPath)
+        public InitCommand(GitSettings gitSettings)
         {
-            _repoPath = repoPath;
+            _gitSettings = gitSettings;
         }
 
         public void Execute()
         {
-            var gitDir = Path.Combine(_repoPath, ".mygit");
+            var gitDir = _gitSettings.gitPath;
 
             if (Directory.Exists(gitDir))
             {
@@ -34,12 +35,17 @@ namespace GitCloneApp.Commands
                 // Create HEAD file pointing to main
                 File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: branches/main");
 
-                Console.WriteLine($"Initialized empty MyGit repository in {_repoPath}\\.mygit");
+                Console.WriteLine($"Initialized empty MyGit repository in {_gitSettings.gitPath}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error initializing repository: {ex.Message}");
             }
+        }
+
+        public void Execute(params object[] args)
+        {
+            Execute();
         }
     }
 }
