@@ -18,6 +18,8 @@ namespace GitCloneApp.Commands
             return commandName switch
             {
                 "init" => _serviceProvider.GetRequiredService<InitCommand>(),
+                "add" => _serviceProvider.GetRequiredService<AddCommand>(), 
+                "commit" => _serviceProvider.GetRequiredService<CommitCommand>()
             };
         }
     }
