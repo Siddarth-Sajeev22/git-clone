@@ -1,4 +1,5 @@
 using System;
+using GitCloneApp.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GitCloneApp.Commands
@@ -19,7 +20,8 @@ namespace GitCloneApp.Commands
             {
                 "init" => _serviceProvider.GetRequiredService<InitCommand>(),
                 "add" => _serviceProvider.GetRequiredService<AddCommand>(), 
-                "commit" => _serviceProvider.GetRequiredService<CommitCommand>()
+                "commit" => _serviceProvider.GetRequiredService<CommitCommand>(), 
+                "branch" => _serviceProvider.GetRequiredService<BranchCommand>()
             };
         }
     }

@@ -27,13 +27,13 @@ namespace GitCloneApp.Commands
                 // Create .mygit directory structure
                 Directory.CreateDirectory(gitDir);
                 Directory.CreateDirectory(Path.Combine(gitDir, "commits"));
-                Directory.CreateDirectory(Path.Combine(gitDir, "branches"));
+                Directory.CreateDirectory(Path.Combine(gitDir, "refs", "heads", "main"));
 
                 // Create main branch with no commits yet
-                File.WriteAllText(Path.Combine(gitDir, "branches", "main"), string.Empty);
+                File.WriteAllText(Path.Combine(gitDir, "refs", "heads", "main"), string.Empty);
 
                 // Create HEAD file pointing to main
-                File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: branches/main");
+                File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: ref/heads/main");
 
                 Console.WriteLine($"Initialized empty MyGit repository in {_gitSettings.gitPath}");
             }
