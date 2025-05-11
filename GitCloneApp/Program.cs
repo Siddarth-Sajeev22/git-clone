@@ -12,8 +12,10 @@ class Program
             {
                 // Register services for dependency injection
                 services.AddSingleton<GitSettings>();
-                services.AddTransient<ICommand, InitCommand>();
-                services.AddTransient<ICommand, AddCommand>();
+                services.AddTransient<InitCommand>();
+                services.AddTransient<AddCommand>();
+                services.AddTransient<BranchCommand>();
+                services.AddTransient<CommitCommand>();
                 services.AddSingleton<CommandResolver>();  // Register the CommandResolver
             })
             .Build();
@@ -33,7 +35,7 @@ class Program
         }
         else {
             try {
-                gitCommand.Execute();
+                gitCommand.Execute(args.Skip(1).ToArray());
             }
             catch (Exception ex) {
                 Console.WriteLine($"Error executing command: {ex.Message}");

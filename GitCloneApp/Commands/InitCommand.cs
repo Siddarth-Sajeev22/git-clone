@@ -27,7 +27,7 @@ namespace GitCloneApp.Commands
                 // Create .mygit directory structure
                 Directory.CreateDirectory(gitDir);
                 Directory.CreateDirectory(Path.Combine(gitDir, "commits"));
-                Directory.CreateDirectory(Path.Combine(gitDir, "refs", "heads", "main"));
+                Directory.CreateDirectory(Path.Combine(gitDir, "refs", "heads"));
 
                 // Create main branch with no commits yet
                 File.WriteAllText(Path.Combine(gitDir, "refs", "heads", "main"), string.Empty);
