@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": ".NET Debug Branch Command",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/GitCloneApp/bin/Debug/net9.0/GitCloneApp.dll",
+      "args": ["branch", "test"],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    }
+  ]
+}

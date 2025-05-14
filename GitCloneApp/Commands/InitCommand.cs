@@ -30,7 +30,9 @@ namespace GitCloneApp.Commands
                 Directory.CreateDirectory(Path.Combine(gitDir, "refs", "heads"));
 
                 // Create main branch with no commits yet
-                File.WriteAllText(Path.Combine(gitDir, "refs", "heads", "main"), string.Empty);
+                var initialCommitHash = Guid.NewGuid().ToString().Substring(0, 8); 
+
+                File.WriteAllText(Path.Combine(gitDir, "refs", "heads", "main"), initialCommitHash);
 
                 // Create HEAD file pointing to main
                 File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: ref/heads/main");

@@ -25,3 +25,5 @@ obj/
 
 # Ignore MyGit repository folder
 .mygit/
+.vs 
+*.sln
