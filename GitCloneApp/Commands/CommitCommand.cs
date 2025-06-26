@@ -55,7 +55,8 @@ namespace GitCloneApp.Commands
             {
                 var sourceFile = Path.Combine(_repoPath, file);
                 var destinationFile = Path.Combine(commitDir, file);
-                if (Utils.ComputeHash(sourceFile) != hash)
+                var recentHash = Utils.ComputeHash(File.ReadAllText(sourceFile));
+                if ( recentHash != hash)
                 {
                     Console.WriteLine("Changes in the source file have not been staged. Please stage them before commiting");
                     return;

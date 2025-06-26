@@ -35,7 +35,7 @@ namespace GitCloneApp.Commands
                 File.WriteAllText(Path.Combine(gitDir, "refs", "heads", "main"), initialCommitHash);
 
                 // Create HEAD file pointing to main
-                File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: ref/heads/main");
+                File.WriteAllText(Path.Combine(gitDir, "HEAD"), "ref: refs/heads/main");
 
                 Console.WriteLine($"Initialized empty MyGit repository in {_gitSettings.gitPath}");
             }

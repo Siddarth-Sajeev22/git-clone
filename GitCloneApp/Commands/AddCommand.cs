@@ -20,18 +20,19 @@ namespace GitCloneApp.Commands
                 var hash = Utils.ComputeHash(fileContent); 
                 Dictionary<string, string> index = File.Exists(indexPath) ? JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(indexPath)) ?? new Dictionary<string, string>() : new Dictionary<string, string>();
 
-                index[filePath] = hash ;
+                index[file] = hash ;
                 File.WriteAllText(indexPath, JsonSerializer.Serialize(index, new JsonSerializerOptions{ WriteIndented = true}));
             }
         }
 
         public void Execute(params object[] args)
         {
-            if (args.Length > 0 && args[0] is string[] files)
+            if (args.Length > 0)
             {
-                Execute(files); 
-            } 
-            else 
+                var files = args.Select(a => a?.ToString() ?? string.Empty).ToArray();
+                Execute(files);
+            }
+            else
             {
                 throw new ArgumentException("Invalid args passed to add command"); 
             }
